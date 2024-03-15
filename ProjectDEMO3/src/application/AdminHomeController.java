@@ -20,9 +20,13 @@ import javafx.stage.Stage;
 public class AdminHomeController implements Initializable{
 	@FXML Button Issuebookbtn;
 	@FXML Button Returnbookbtn;
+	@FXML MenuItem Menuitemaddnewbook;
 	@FXML MenuItem Menuitemaddnewuser;
 	@FXML Menu menuuser;
+	@FXML Menu bookmenu;
 	@FXML MenuBar mymenubar;
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -96,6 +100,27 @@ public class AdminHomeController implements Initializable{
 			}
 		
 		});
+			
+			Menuitemaddnewbook.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					FXMLLoader loader = new FXMLLoader(Addnewusercontroller.class.getResource("addnewbook.fxml"));
+					try {
+						Parent root=loader.load();
+						Stage stage=(Stage)mymenubar.getScene().getWindow();
+						
+						stage.setScene(new Scene(root,1200,800));
+						stage.setTitle("Create new User");
+						stage.show();
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			
+			});
 	
 	}
 }

@@ -26,9 +26,9 @@
               <MenuItem fx:id="Menuitemaddnewuser" mnemonicParsing="false" text="Add New User" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Books">
+          <Menu fx:id="bookmenu" mnemonicParsing="false" text="Books">
             <items>
-              <MenuItem mnemonicParsing="false" text="Add New Book" />
+              <MenuItem fx:id="Menuitemaddnewbook" mnemonicParsing="false" text="Add New Book" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Help">
