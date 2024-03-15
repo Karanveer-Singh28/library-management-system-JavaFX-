@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookReturnController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="2.0" prefHeight="61.0" prefWidth="1200.0" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutY="16.0" prefHeight="61.0" prefWidth="1200.0" text="Book Return" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="Homebtn" mnemonicParsing="false" text="Home" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="18.0" />
+      <Label layoutX="441.0" layoutY="181.0" prefWidth="96.0" text="Book ID  :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="571.0" layoutY="180.0" prefHeight="25.0" prefWidth="158.0" promptText="Enter Book id .." />
+      <Label fx:id="bookidwarninglabel" layoutX="571.0" layoutY="215.0" prefHeight="17.0" prefWidth="423.0" />
+      <Label layoutX="380.0" layoutY="244.0" prefHeight="27.0" prefWidth="158.0" text="Book Condition  :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="571.0" layoutY="245.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="408.0" layoutY="306.0" prefHeight="27.0" prefWidth="130.0" text="Return Date  :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <DatePicker layoutX="571.0" layoutY="307.0" prefHeight="25.0" prefWidth="158.0" />
+      <Line endX="260.0" layoutX="571.0" layoutY="429.0" startX="-232.0" />
+      <Label layoutX="550.0" layoutY="449.0" prefHeight="27.0" prefWidth="75.0" text="Total  :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="Pricedisplaylabel" layoutX="650.0" layoutY="449.0" prefHeight="27.0" prefWidth="75.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="paycard" layoutX="681.0" layoutY="568.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="Credit / Debit" textFill="WHITE" />
+      <Button layoutX="581.0" layoutY="568.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: grey;" text="Cash" textFill="WHITE" />
+      <Label layoutX="432.0" layoutY="567.0" prefHeight="27.0" prefWidth="122.0" text="Pay with  :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
