@@ -142,12 +142,9 @@ public class adminIssueBookController implements Initializable{
 							Publisherlbl.setText(queryResult.getString(4));
 							Availabilitylbl.setText(Integer.toString(queryResult.getInt(6)));
 							Bookcover.setImage(new Image(queryResult.getString(3)));	
-							int booksavailable=queryResult.getInt(6);
-							System.out.println("1st got executed");
-							
+							int booksavailable=queryResult.getInt(6);							
 							
 							queryResult = statement.executeQuery(user);
-							System.out.println("2nd got executed");
 					        
 							if(queryResult.next() != true)
 							{
@@ -161,19 +158,16 @@ public class adminIssueBookController implements Initializable{
 							
 							else 
 							{
-								System.out.println("3rd got executed");
 								DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 								String updateuser= "UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+ bookid +"', `Issuedate` = '" +formatter.format(Issuedate.getValue()) +"' WHERE (`idUserAccount` = '" + userid +"');";
 								
 								statement.executeUpdate(updateuser);
-								System.out.println("4th got executed");
 								
 								String updatebook = "UPDATE `librarymanager`.`bookinfo` SET `Available` = '"+ booksavailable +"' WHERE (`BookID` = '3');";
 								statement.executeUpdate(updatebook);
 								
-								System.out.println("5th got executed");
 								
-								Messagelbl.setText("Book Issued to ");
+								Messagelbl.setText("Book Issed");
 								
 								statement.close();
 								queryResult.close();
