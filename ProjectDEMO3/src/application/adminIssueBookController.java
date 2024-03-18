@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -36,6 +37,7 @@ public class adminIssueBookController implements Initializable{
 	@FXML Label Publisherlbl;
 	@FXML Label Availabilitylbl;
 	@FXML ImageView Bookcover;
+	@FXML Button Issuebookbtn;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -45,40 +47,40 @@ public class adminIssueBookController implements Initializable{
 		//Return to Admin Home page 
 			Homebtn.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent arg0) {
-				FXMLLoader loader = new FXMLLoader(AdminHomeController.class.getResource("AdminHome.fxml"));
-				try {
-					Parent root=loader.load();
-					Stage stage=(Stage)Homebtn.getScene().getWindow();
+				@Override
+				public void handle(ActionEvent arg0) {
+					FXMLLoader loader = new FXMLLoader(AdminHomeController.class.getResource("AdminHome.fxml"));
+					try {
+						Parent root=loader.load();
+						Stage stage=(Stage)Homebtn.getScene().getWindow();
 					
-					stage.setScene(new Scene(root,1200,800));
-					stage.setTitle("Admin Home");
-					stage.show();
+						stage.setScene(new Scene(root,1200,800));
+						stage.setTitle("Admin Home");
+						stage.show();
 					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
 		
-		});
+			});
 			
 			
+			//Searches if the book is available in DB and displays book info
 			Searchbook.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
+				@Override
 				public void handle(ActionEvent arg0) {
 				
-				DatabaseConnection connectNow = new DatabaseConnection();
-				Connection connectDB = connectNow.getConnection();
-				
-				String book = "SELECT * FROM bookinfo WHERE BookID= '"+ BookIDtxt.getText() +"';";
+					DatabaseConnection connectNow = new DatabaseConnection();
+					Connection connectDB = connectNow.getConnection();
+			
+					String book = "SELECT * FROM bookinfo WHERE BookID= '"+ BookIDtxt.getText() +"';";
 				
 					Statement statement;
 					try {
 						statement = connectDB.createStatement();
-						ResultSet queryResult = statement.executeQuery(book);
-						
+						ResultSet queryResult = statement.executeQuery(book);					
 						
 						
 						if(queryResult.next() != true)
@@ -88,25 +90,102 @@ public class adminIssueBookController implements Initializable{
 						
 						else
 						{
-							
 							Messagelbl.setText("");
 							Titlelbl.setText(queryResult.getString(2));
 							Authorlbl.setText(queryResult.getString(5));
 							Publisherlbl.setText(queryResult.getString(4));
 							Availabilitylbl.setText(Integer.toString(queryResult.getInt(6)));
-							Bookcover.setImage(new Image(queryResult.getString(3)));
-							
+							Bookcover.setImage(new Image(queryResult.getString(3)));							
 						}
+						queryResult.close();
+				        statement.close();
 					
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
-				
+					 
 				}
 			});
-	}
+			
+			
+			Issuebookbtn.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					int userid=Integer.parseInt(UserIDtxt.getText());
+					int bookid=Integer.parseInt(BookIDtxt.getText());
+					
+					DatabaseConnection connectNow = new DatabaseConnection();
+					Connection connectDB = connectNow.getConnection();
+			
+					String book = "SELECT * FROM bookinfo WHERE BookID= '"+ bookid +"';";
+					String user= "SELECT * FROM useraccounts WHERE idUserAccount = '"+ userid +"';";
+					
+					Statement statement;
+					try {
+						statement = connectDB.createStatement();
+						ResultSet queryResult = statement.executeQuery(book);
+						
+						if(queryResult.next() != true)
+						{
+							Messagelbl.setText("Invalid Book ID !");
+						}
+						
+						else
+						{
+							Messagelbl.setText("");
+							Titlelbl.setText(queryResult.getString(2));
+							Authorlbl.setText(queryResult.getString(5));
+							Publisherlbl.setText(queryResult.getString(4));
+							Availabilitylbl.setText(Integer.toString(queryResult.getInt(6)));
+							Bookcover.setImage(new Image(queryResult.getString(3)));	
+							int booksavailable=queryResult.getInt(6);
+							System.out.println("1st got executed");
+							
+							
+							queryResult = statement.executeQuery(user);
+							System.out.println("2nd got executed");
+					        
+							if(queryResult.next() != true)
+							{
+								Messagelbl.setText("Invalid User ID !");
+							}
+							
+							else if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
+							{
+								Messagelbl.setText("User already has an Unreturned book !");
+							}
+							
+							else 
+							{
+								System.out.println("3rd got executed");
+								DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+								String updateuser= "UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+ bookid +"', `Issuedate` = '" +formatter.format(Issuedate.getValue()) +"' WHERE (`idUserAccount` = '" + userid +"');";
+								
+								statement.executeUpdate(updateuser);
+								System.out.println("4th got executed");
+								
+								String updatebook = "UPDATE `librarymanager`.`bookinfo` SET `Available` = '"+ booksavailable +"' WHERE (`BookID` = '3');";
+								statement.executeUpdate(updatebook);
+								
+								System.out.println("5th got executed");
+								
+								Messagelbl.setText("Book Issued to ");
+								
+								statement.close();
+								queryResult.close();
+							}				
+						}
+					}catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}						
+			});		
+		}
 }
 
 			

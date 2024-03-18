@@ -24,11 +24,15 @@
          <image>
             <Image url="@../images/Bookplaceholder.png" />
          </image></ImageView>
-      <Label layoutX="472.0" layoutY="506.0" text="User ID:" />
-      <TextField fx:id="UserIDtxt" layoutX="537.0" layoutY="502.0" prefHeight="25.0" prefWidth="192.0" promptText="Enter User ID " />
       <Button fx:id="Homebtn" mnemonicParsing="false" text="Home" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.0" />
       <Label layoutX="472.0" layoutY="472.0" text="Book ID:" />
       <TextField fx:id="BookIDtxt" layoutX="537.0" layoutY="468.0" prefHeight="25.0" prefWidth="192.0" promptText="Enter Book ID " />
+      <Button fx:id="Searchbook" layoutX="752.0" layoutY="468.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Search" />
+      <Label layoutX="472.0" layoutY="506.0" text="User ID:" />
+      <TextField fx:id="UserIDtxt" layoutX="537.0" layoutY="502.0" prefHeight="25.0" prefWidth="192.0" promptText="Enter User ID " />
+      <Label layoutX="464.0" layoutY="543.0" text="Issue Date :" />
+      <DatePicker fx:id="Issuedate" layoutX="537.0" layoutY="539.0" prefHeight="25.0" prefWidth="192.0" />
+      <Button fx:id="Issuebookbtn" layoutX="537.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: grey;" text="Issue Book" textFill="WHITE" />
       <Label layoutX="627.0" layoutY="242.0" text="Title:" />
       <Label fx:id="Titlelbl" layoutX="692.0" layoutY="242.0" prefHeight="17.0" prefWidth="359.0" />
       <Label layoutX="627.0" layoutY="268.0" text="Author:" />
@@ -37,10 +41,6 @@
       <Label fx:id="Publisherlbl" layoutX="692.0" layoutY="292.0" prefHeight="17.0" prefWidth="359.0" />
       <Label layoutX="627.0" layoutY="318.0" text="Availability:" />
       <Label fx:id="Availabilitylbl" layoutX="692.0" layoutY="318.0" prefHeight="17.0" prefWidth="359.0" />
-      <Label layoutX="464.0" layoutY="543.0" text="Issue Date :" />
-      <DatePicker fx:id="Issuedate" layoutX="537.0" layoutY="539.0" prefHeight="25.0" prefWidth="192.0" />
-      <Button layoutX="537.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: grey;" text="Issue Book" textFill="WHITE" />
-      <Button fx:id="Searchbook" layoutX="752.0" layoutY="468.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Search" />
       <Label fx:id="Messagelbl" layoutX="395.0" layoutY="435.0" prefHeight="17.0" prefWidth="359.0" textFill="RED">
          <font>
             <Font size="14.0" />
