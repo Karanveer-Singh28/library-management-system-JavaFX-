@@ -22,9 +22,12 @@ public class AdminHomeController implements Initializable{
 	@FXML Button Returnbookbtn;
 	@FXML MenuItem Menuitemaddnewbook;
 	@FXML MenuItem Menuitemaddnewuser;
+	@FXML MenuItem Logout;
 	@FXML Menu menuuser;
 	@FXML Menu bookmenu;
+	@FXML Menu myaccountmenu;
 	@FXML MenuBar mymenubar;
+	
 	
 	
 	@Override
@@ -121,6 +124,40 @@ public class AdminHomeController implements Initializable{
 				}
 			
 			});
-	
-	}
+			
+			
+			Logout.setOnAction(new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("login.fxml"));
+					try {
+						Parent root=loader.load();
+						Stage stage=(Stage)mymenubar.getScene().getWindow();
+						
+						
+						
+						stage.setScene(new Scene(root,1200,800));
+						stage.setTitle("Login Page");
+						stage.show();
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			
+		}
 }
+
+			
+					
+					
+				
+		
+			
+			
+	
+			
+

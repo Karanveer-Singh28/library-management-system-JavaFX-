@@ -31,9 +31,9 @@
               <MenuItem fx:id="Menuitemaddnewbook" mnemonicParsing="false" text="Add New Book" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Help">
+            <Menu fx:id="muaccountmenu" mnemonicParsing="false" text="My Account">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Contact Admin" />
+                  <MenuItem fx:id="Logout" mnemonicParsing="false" text="Logout" />
                </items></Menu>
         </menus>
       </MenuBar>

@@ -114,6 +114,19 @@ public class HelloController implements Initializable {
 		
 		});
 		
+		
+		Cancelbtn.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				Stage stage=(Stage)Cancelbtn.getScene().getWindow();
+				stage.close();	
+			}
+			
+			
+		});
+		
 	}
 }
 
