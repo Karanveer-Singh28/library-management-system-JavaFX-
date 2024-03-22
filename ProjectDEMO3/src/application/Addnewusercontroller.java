@@ -72,7 +72,7 @@ public class Addnewusercontroller implements Initializable{
 					// TODO Auto-generated method stub
 					errorlabel.setText("");
 					
-					if(Firstnametxt.getText()==null || Lastnametxt.getText()==null || Usernametxt.getText()==null || Passwordtxt.getText()==null || Passwordconfirmtxt.getText()==null || accountcombo.getValue()==null)
+					if((Firstnametxt.getText()==null || Firstnametxt.getText().isEmpty()) || (Lastnametxt.getText()==null || Lastnametxt.getText().isEmpty()) || (Usernametxt.getText()==null || Usernametxt.getText().isEmpty()) || (Passwordtxt.getText()==null || Passwordtxt.getText().isEmpty()) || (Passwordconfirmtxt.getText()==null || Passwordconfirmtxt.getText().isEmpty()) || (accountcombo.getValue()==null))
 					{
 						errorlabel.setText("Enter Full Information");
 					}
