@@ -104,7 +104,7 @@ public class addnewbookcontroller implements Initializable {
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 								
-				if(booktitletxt.getText() == null || authortxt.getText() == null || conditioncombo.getValue()==null || path==null)
+				if(booktitletxt.getText() == null || authortxt.getText() == null || conditioncombo.getValue()==null || path==null ||publishertxt.getText()==null)
 				{ errorlabel.setText("Enter full details !");}
 				
 				else
