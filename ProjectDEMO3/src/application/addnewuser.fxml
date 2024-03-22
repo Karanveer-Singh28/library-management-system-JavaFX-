@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -17,38 +19,54 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="379.0" layoutY="174.0" prefHeight="25.0" text="First Name             :">
+      <Label layoutX="358.0" layoutY="244.0" prefHeight="25.0" text="First Name             :">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="563.0" layoutY="177.0" prefWidth="300.0" promptText="Enter First name ...." />
-      <Label layoutX="379.0" layoutY="218.0" prefHeight="25.0" text="Last Name             :">
+      <TextField fx:id="Firstnametxt" layoutX="542.0" layoutY="247.0" prefWidth="300.0" promptText="Enter First name ...." />
+      <Label layoutX="358.0" layoutY="288.0" prefHeight="25.0" text="Last Name             :">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="379.0" layoutY="256.0" prefHeight="25.0" text="Username              :">
+      <TextField fx:id="Lastnametxt" layoutX="542.0" layoutY="291.0" prefWidth="300.0" promptText="Enter Last name ...." />
+      <Label layoutX="358.0" layoutY="326.0" prefHeight="25.0" text="Username              :">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="379.0" layoutY="293.0" prefHeight="25.0" text="New Password       :">
+      <TextField fx:id="Usernametxt" layoutX="542.0" layoutY="329.0" prefWidth="300.0" promptText="Enter new username" />
+      <Label layoutX="358.0" layoutY="363.0" prefHeight="25.0" text="New Password       :">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="563.0" layoutY="221.0" prefWidth="300.0" promptText="Enter Last name ...." />
-      <TextField layoutX="563.0" layoutY="259.0" prefWidth="300.0" promptText="Enter new username" />
-      <TextField layoutX="563.0" layoutY="296.0" prefWidth="300.0" promptText="Enter new password" />
-      <Label layoutX="379.0" layoutY="331.0" prefHeight="25.0" text="Confirm Password :">
+      <PasswordField fx:id="Passwordtxt" layoutX="542.0" layoutY="366.0" prefHeight="25.0" prefWidth="300.0" promptText="Enter password" />
+      <Label layoutX="358.0" layoutY="401.0" prefHeight="25.0" text="Confirm Password :">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="563.0" layoutY="334.0" prefWidth="300.0" promptText="Confirm password" />
-      <Button layoutX="713.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: grey;" text="Confirm" textFill="WHITE" />
-      <Button layoutX="563.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: lightgrey;" text="Exit" />
+      <PasswordField fx:id="Passwordconfirmtxt" layoutX="542.0" layoutY="404.0" prefHeight="25.0" prefWidth="300.0" promptText="Confirm Password" />
+      <Button fx:id="Confirmbtn" layoutX="692.0" layoutY="532.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: grey;" text="Confirm" textFill="WHITE" />
+      <Button layoutX="542.0" layoutY="532.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: lightgrey;" text="Exit" />
       <Button fx:id="Homebtn" mnemonicParsing="false" text="Home" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="21.0" />
+      <Label layoutX="358.0" layoutY="437.0" prefHeight="30.0" prefWidth="172.0" text="User Type              :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountcombo" layoutX="542.0" layoutY="442.0" prefHeight="25.0" prefWidth="300.0" promptText="Choose account type" />
+      <Label fx:id="errorlabel" alignment="CENTER" layoutX="358.0" layoutY="197.0" prefHeight="17.0" prefWidth="485.0" textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="successlabel" alignment="CENTER" layoutX="358.0" layoutY="478.0" prefHeight="17.0" prefWidth="485.0" textFill="#37ab33">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

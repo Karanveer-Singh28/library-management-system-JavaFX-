@@ -102,8 +102,7 @@ public class BookReturnController implements Initializable{
 						
 						long diffInMillies = Math.abs(start.getTime() - stop.getTime());
 						long diff =TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-						//System.out.println("Difference is "+diff+"days");
-						
+												
 						if(diff<=31)
 						{
 							cost= diff * 0.5;
@@ -119,20 +118,13 @@ public class BookReturnController implements Initializable{
 						condition=queryResult.getString(1);
 												
 						if(condition == (bookcondition.getValue())) 
-						{}
-						
+						{	cost+=0;			}
 						else if(bookcondition.getValue() == "Used")
-						{
-							cost+=10;
-						}
+						{	cost+=10;	}
 						else if(bookcondition.getValue() == "Damaged Level 1")
-						{
-							cost+=20;
-						}
+						{	cost+=20;	}
 						else if(bookcondition.getValue() == "Damaged Level 2")
-						{
-							cost+=35;
-						}
+						{	cost+=35;	}
 						
 						Pricedisplaylabel.setText("$ "+ cost);
 						
@@ -177,6 +169,8 @@ public class BookReturnController implements Initializable{
 				}	
 				}
 			});	
+			
+			
 			
 			paycash.setOnAction(new EventHandler<ActionEvent>() {
 
