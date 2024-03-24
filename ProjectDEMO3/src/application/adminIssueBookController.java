@@ -115,11 +115,11 @@ public class adminIssueBookController implements Initializable{
 				@Override
 				public void handle(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					int userid=Integer.parseInt(UserIDtxt.getText());
+					int userid=Integer.parseInt(UserIDtxt.getText());    //TODO NEED TO CHECK IF ANY FIELD IS BLANK 
 					int bookid=Integer.parseInt(BookIDtxt.getText());
 					
 					DatabaseConnection connectNow = new DatabaseConnection();
-					Connection connectDB = connectNow.getConnection();
+					Connection connectDB = connectNow.getConnection();  
 			
 					String book = "SELECT * FROM bookinfo WHERE BookID= '"+ bookid +"';";
 					String user= "SELECT * FROM useraccounts WHERE idUserAccount = '"+ userid +"';";

@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="573.0" maxWidth="787.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="573.0" maxWidth="787.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.userhomecontroller">
    <children>
-      <Pane prefHeight="573.0" prefWidth="787.0">
+      <Pane fx:id="mypane" maxHeight="573.0" maxWidth="787.0" prefHeight="573.0" prefWidth="787.0">
          <children>
             <Pane prefHeight="44.0" prefWidth="787.0" style="-fx-background-color: grey;">
                <children>
@@ -33,7 +33,7 @@
             </Pane>
             <HBox layoutX="17.0" layoutY="67.0" maxWidth="749.0" minWidth="749.0" prefHeight="183.0" prefWidth="749.0" spacing="57.0">
                <children>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book1cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -43,7 +43,7 @@
                      <image>
                         <Image url="@../images/Java_Textbook.jpg" />
                      </image></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book2cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <image>
                         <Image url="@../images/Harry_Potter.jpg" />
                      </image>
@@ -53,7 +53,7 @@
                      <effect>
                         <DropShadow />
                      </effect></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book3cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -63,7 +63,7 @@
                      <effect>
                         <DropShadow />
                      </effect></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book4cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <image>
                         <Image url="@../images/Book_Thief.jpg" />
                      </image>
@@ -78,7 +78,7 @@
             </HBox>
             <HBox layoutX="17.0" layoutY="326.0" maxWidth="749.0" minWidth="749.0" prefHeight="183.0" prefWidth="749.0" spacing="57.0">
                <children>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book5cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <image>
                         <Image url="@../images/American_Prometheus.jpg" />
                      </image>
@@ -88,7 +88,7 @@
                      <effect>
                         <DropShadow />
                      </effect></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book6cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -98,7 +98,7 @@
                      <effect>
                         <DropShadow />
                      </effect></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book7cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -109,7 +109,7 @@
                      <effect>
                         <DropShadow />
                      </effect></ImageView>
-                  <ImageView fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+                  <ImageView fx:id="book8cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <image>
                         <Image url="@../images/Disposed.jpg" />
                      </image>
@@ -127,7 +127,7 @@
                   <Insets left="30.0" right="30.0" top="10.0" />
                </padding>
                <children>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Introduction to Java" textAlignment="CENTER">
+                  <Hyperlink fx:id="book1title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Introduction to Java" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -135,7 +135,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Harry Potter" textAlignment="CENTER">
+                  <Hyperlink fx:id="book2title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Harry Potter" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -143,7 +143,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Blood and Elves" textAlignment="CENTER">
+                  <Hyperlink fx:id="book3title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Blood and Elves" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -151,7 +151,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Book Thief" textAlignment="CENTER">
+                  <Hyperlink fx:id="book4title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Book Thief" textAlignment="CENTER">
                      <effect>
                         <Glow />
                      </effect></Hyperlink>
@@ -162,7 +162,7 @@
                   <Insets left="30.0" right="30.0" top="10.0" />
                </padding>
                <children>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="American Prometheus" textAlignment="CENTER">
+                  <Hyperlink fx:id="book5title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="American Prometheus" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -170,7 +170,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="The Sun Also Rises" textAlignment="CENTER">
+                  <Hyperlink fx:id="book6title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="The Sun Also Rises" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -178,7 +178,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="Fear and Loathing" textAlignment="CENTER" wrapText="true">
+                  <Hyperlink fx:id="book7title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="Fear and Loathing" textAlignment="CENTER" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -186,7 +186,7 @@
                         <Glow />
                      </effect>
                   </Hyperlink>
-                  <Hyperlink alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Disposed" textAlignment="CENTER">
+                  <Hyperlink fx:id="book8title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Disposed" textAlignment="CENTER">
                      <effect>
                         <Glow />
                      </effect></Hyperlink>

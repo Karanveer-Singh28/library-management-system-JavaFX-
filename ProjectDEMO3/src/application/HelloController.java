@@ -76,13 +76,13 @@ public class HelloController implements Initializable {
 								}
 								else if(queryResult.getInt(2) == 0)
 								{
-									FXMLLoader loader = new FXMLLoader(UserHomeController.class.getResource("UserHomepage.fxml"));
+									FXMLLoader loader = new FXMLLoader(userhomecontroller.class.getResource("UserHomepage.fxml"));
 									try {
 										Parent root=loader.load();
 										Stage stage=(Stage)Submitbtn.getScene().getWindow();
 										
 										stage.setScene(new Scene(root,787.0,573.0));
-										stage.setTitle("Admin Home Page");
+										stage.setTitle("User Home Page");
 										stage.centerOnScreen();
 										stage.show();
 										
@@ -91,7 +91,6 @@ public class HelloController implements Initializable {
 										e.printStackTrace();
 									}
 								}
-								
 								
 							}
 							
