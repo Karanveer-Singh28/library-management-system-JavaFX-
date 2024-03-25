@@ -59,10 +59,15 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="509.0" layoutY="603.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: grey;" text="Issue" textFill="WHITE">
+      <Button fx:id="issuebtn" layoutX="509.0" layoutY="603.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: grey;" text="Issue" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Label fx:id="successlbl" layoutX="348.0" layoutY="540.0" prefHeight="27.0" prefWidth="489.0" textFill="#4a9a3f">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

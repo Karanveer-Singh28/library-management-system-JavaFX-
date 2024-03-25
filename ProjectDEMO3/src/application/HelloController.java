@@ -44,7 +44,7 @@ public class HelloController implements Initializable {
 				DatabaseConnection connectNow = new DatabaseConnection();
 				Connection connectDB = connectNow.getConnection();
 				
-				String verifyLogin = "SELECT count(1), AccountType FROM useraccounts WHERE Username='" + usernameTextField.getText() + "' AND Password='" + passwordPasswordField.getText() + "'";
+				String verifyLogin = "SELECT count(1), AccountType, idUserAccount FROM useraccounts WHERE Username='" + usernameTextField.getText() + "' AND Password='" + passwordPasswordField.getText() + "'";
 
 				
 				 try {
@@ -78,12 +78,17 @@ public class HelloController implements Initializable {
 								{
 									FXMLLoader loader = new FXMLLoader(userhomecontroller.class.getResource("UserHomepage.fxml"));
 									try {
+										
+										
 										Parent root=loader.load();
 										Stage stage=(Stage)Submitbtn.getScene().getWindow();
 										
+										userhomecontroller Controller=loader.getController();
+										Controller.setUserId(queryResult.getInt(3));
+										
 										stage.setScene(new Scene(root,787.0,573.0));
 										stage.setTitle("User Home Page");
-										stage.centerOnScreen();
+										stage.centerOnScreen();										
 										stage.show();
 										
 									} catch (IOException e) {

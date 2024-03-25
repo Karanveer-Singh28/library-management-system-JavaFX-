@@ -38,7 +38,8 @@ public class adminIssueBookController implements Initializable{
 	@FXML Label Availabilitylbl;
 	@FXML ImageView Bookcover;
 	@FXML Button Issuebookbtn;
-
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

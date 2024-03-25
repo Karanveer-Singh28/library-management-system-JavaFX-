@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -29,10 +30,18 @@ public class BookViewController implements Initializable{
 	@FXML Label bookavailablelbl;
 	@FXML Button homebtn;
 	@FXML ImageView bookimg;
+	@FXML Button issuebtn;
+	@FXML Label successlbl;
+	LocalDate date;
 	
-	public void initData(int bookId) {
+	int userId;
+	int bookId;
+	
+	public void initData(int bookId,int UserId) {
 		// TODO Auto-generated method stub
 		
+		this.userId=UserId;
+		this.bookId=bookId;
 		
 		DatabaseConnection connectNow = new DatabaseConnection();
 		Connection connectDB = connectNow.getConnection();  
@@ -85,6 +94,7 @@ public class BookViewController implements Initializable{
 						// TODO Auto-generated method stub
 						FXMLLoader loader = new FXMLLoader(userhomecontroller.class.getResource("UserHomepage.fxml"));
 						try {
+											
 							Parent root=loader.load();
 							Stage stage=(Stage)homebtn.getScene().getWindow();
 							
@@ -103,7 +113,39 @@ public class BookViewController implements Initializable{
 			
 				});
 		
-	}
+		issuebtn.setOnAction(new EventHandler<ActionEvent>()
+		{
 
-	
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+							
+				DatabaseConnection connectNow = new DatabaseConnection();
+				Connection connectDB = connectNow.getConnection();  
+		
+				String user= "SELECT * FROM useraccounts WHERE idUserAccount = '"+ userId +"';";
+				
+				Statement statement;
+				try {
+					statement = connectDB.createStatement();
+					ResultSet queryResult = statement.executeQuery(user);
+					queryResult.next();
+					String name= queryResult.getString(2)+" "+queryResult.getString(3);
+					
+					date= LocalDate.now();
+					System.out.println(date);
+					
+					String updatequery="UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+bookId+"', `Issuedate` = '"+date+"' WHERE (`idUserAccount` = '"+userId+"');";
+					statement.executeUpdate(updatequery);
+					
+					successlbl.setText(name+" Issed the book");
+					
+				}catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		});
+	}
 }
