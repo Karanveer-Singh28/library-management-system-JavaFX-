@@ -64,7 +64,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="successlbl" layoutX="348.0" layoutY="540.0" prefHeight="27.0" prefWidth="489.0" textFill="#4a9a3f">
+      <Label fx:id="successlbl" alignment="CENTER" layoutX="348.0" layoutY="540.0" prefHeight="27.0" prefWidth="489.0" textFill="#4a9a3f">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="Messagelbl" alignment="CENTER" layoutX="347.0" layoutY="540.0" prefHeight="27.0" prefWidth="489.0" textFill="#bc1e1e">
          <font>
             <Font size="20.0" />
          </font>

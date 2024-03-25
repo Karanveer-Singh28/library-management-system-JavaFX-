@@ -52,6 +52,9 @@
                       <TableColumn prefWidth="90.0" text="Due Date" />
                         <TableColumn minWidth="-Infinity" prefWidth="96.0" text="User ID" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>

@@ -31,7 +31,7 @@
                   <Button fx:id="logoutbtn" layoutX="1132.0" layoutY="11.0" mnemonicParsing="false" text="Logout" />
                </children>
             </Pane>
-            <HBox layoutX="14.0" layoutY="102.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
+            <HBox layoutX="14.0" layoutY="151.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
                <children>
                   <ImageView fx:id="book1cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <HBox.margin>
@@ -76,7 +76,7 @@
                   <Insets left="150.0" right="150.0" top="10.0" />
                </padding>
             </HBox>
-            <HBox layoutX="14.0" layoutY="361.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
+            <HBox layoutX="14.0" layoutY="410.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
                <children>
                   <ImageView fx:id="book5cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
                      <image>
@@ -122,7 +122,7 @@
                   <Insets left="150.0" right="150.0" top="10.0" />
                </padding>
             </HBox>
-            <HBox layoutX="14.0" layoutY="285.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
+            <HBox layoutX="14.0" layoutY="334.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
                <padding>
                   <Insets left="150.0" right="150.0" top="10.0" />
                </padding>
@@ -157,7 +157,7 @@
                      </effect></Hyperlink>
                </children>
             </HBox>
-            <HBox layoutX="14.0" layoutY="544.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
+            <HBox layoutX="14.0" layoutY="593.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
                <padding>
                   <Insets left="150.0" right="150.0" top="10.0" />
                </padding>
@@ -192,7 +192,12 @@
                      </effect></Hyperlink>
                </children>
             </HBox>
-            <Pane layoutY="643.0" prefHeight="157.0" prefWidth="1200.0" style="-fx-background-color: lightgrey;" />
+            <Pane layoutY="711.0" prefHeight="89.0" prefWidth="1200.0" style="-fx-background-color: lightgrey;" />
+            <Label layoutX="159.0" layoutY="78.0" prefHeight="60.0" prefWidth="324.0" text="Recommended Books ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

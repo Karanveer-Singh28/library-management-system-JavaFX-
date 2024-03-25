@@ -32,6 +32,7 @@ public class BookViewController implements Initializable{
 	@FXML ImageView bookimg;
 	@FXML Button issuebtn;
 	@FXML Label successlbl;
+	@FXML Label Messagelbl;
 	LocalDate date;
 	
 	int userId;
@@ -98,6 +99,9 @@ public class BookViewController implements Initializable{
 							Parent root=loader.load();
 							Stage stage=(Stage)homebtn.getScene().getWindow();
 							
+							userhomecontroller Controller=loader.getController();
+							Controller.setUserId(userId);
+							
 							stage.setScene(new Scene(root,1200.0,800.0));
 							stage.setTitle("User Home Page");
 							stage.centerOnScreen();
@@ -133,12 +137,18 @@ public class BookViewController implements Initializable{
 					String name= queryResult.getString(2)+" "+queryResult.getString(3);
 					
 					date= LocalDate.now();
-					System.out.println(date);
 					
+					if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
+					{	
+						Messagelbl.setText("User already has an Unreturned book !");
+					}
+					else {
 					String updatequery="UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+bookId+"', `Issuedate` = '"+date+"' WHERE (`idUserAccount` = '"+userId+"');";
 					statement.executeUpdate(updatequery);
 					
 					successlbl.setText(name+" Issed the book");
+					}
+					
 					
 				}catch (SQLException e) {
 					// TODO Auto-generated catch block
