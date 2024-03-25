@@ -86,7 +86,7 @@ public class HelloController implements Initializable {
 										userhomecontroller Controller=loader.getController();
 										Controller.setUserId(queryResult.getInt(3));
 										
-										stage.setScene(new Scene(root,787.0,573.0));
+										stage.setScene(new Scene(root,1200.0,800.0));
 										stage.setTitle("User Home Page");
 										stage.centerOnScreen();										
 										stage.show();

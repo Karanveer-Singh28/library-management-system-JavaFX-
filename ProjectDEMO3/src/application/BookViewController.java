@@ -98,7 +98,7 @@ public class BookViewController implements Initializable{
 							Parent root=loader.load();
 							Stage stage=(Stage)homebtn.getScene().getWindow();
 							
-							stage.setScene(new Scene(root,787.0,573.0));
+							stage.setScene(new Scene(root,1200.0,800.0));
 							stage.setTitle("User Home Page");
 							stage.centerOnScreen();
 							stage.show();
