@@ -42,6 +42,7 @@ public class addnewbookcontroller implements Initializable {
 	
 	
 	public static String path;
+	File file;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -80,7 +81,7 @@ public class addnewbookcontroller implements Initializable {
 					fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png","*.jpeg","*.svg"));
 					Stage stage=(Stage)myanchorpane.getScene().getWindow();
 					
-					File file=fileChooser.showOpenDialog(stage);
+					file=fileChooser.showOpenDialog(stage);
 					if(file==null) {
 						errorlabel.setText("Upload the book cover image!");
 					}else {
@@ -104,7 +105,7 @@ public class addnewbookcontroller implements Initializable {
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 								
-				if((booktitletxt.getText().isEmpty() || booktitletxt.getText()==null ) || (authortxt.getText().isEmpty() || authortxt.getText()==null) || (conditioncombo.getValue()== null) || (path.isEmpty() || path==null) || (publishertxt.getText().isEmpty() || publishertxt.getText()==null))
+				if((booktitletxt.getText().isEmpty() || booktitletxt.getText()==null ) || (authortxt.getText().isEmpty() || authortxt.getText()==null) || (conditioncombo.getValue()== null) || (file==null) || (publishertxt.getText().isEmpty() || publishertxt.getText()==null))
 				{ errorlabel.setText("Enter full details !");
 				}
 				
