@@ -5,5 +5,5 @@ module ProjectDEMO3 {
 	requires java.sql;
 	requires javafx.graphics;
 	
-	opens application to javafx.graphics, javafx.fxml;
+	opens application to javafx.graphics, javafx.fxml, javafx.base, javafx.controls;
 }
