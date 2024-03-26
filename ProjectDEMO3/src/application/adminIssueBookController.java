@@ -154,7 +154,7 @@ public class adminIssueBookController implements Initializable{
 							
 							else if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
 							{
-								Messagelbl.setText("User already has an Unreturned book !");
+								Messagelbl.setText("User already has an Unreturned book ! Book id : "+queryResult.getInt(7));
 							}
 							
 							else if(BookIDtxt.getText()== null || UserIDtxt.getText()==null || Issuedate.getValue()==null)

@@ -140,7 +140,7 @@ public class BookViewController implements Initializable{
 					
 					if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
 					{	
-						Messagelbl.setText("User already has an Unreturned book !");
+						Messagelbl.setText("User already has an Unreturned book ! Book id : "+queryResult.getInt(7));
 					}
 					else {
 					String updatequery="UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+bookId+"', `Issuedate` = '"+date+"' WHERE (`idUserAccount` = '"+userId+"');";

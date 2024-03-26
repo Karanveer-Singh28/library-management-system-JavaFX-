@@ -33,6 +33,7 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <ComboBox fx:id="bookcondition" layoutX="571.0" layoutY="245.0" prefHeight="25.0" prefWidth="158.0" />
       <Label layoutX="408.0" layoutY="306.0" prefHeight="27.0" prefWidth="130.0" text="Return Date  :">
          <font>
             <Font size="18.0" />
@@ -58,7 +59,6 @@
          </font>
       </Label>
       <Button fx:id="calculate" layoutX="644.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: grey;" text="Calculate" textFill="WHITE" />
-      <ComboBox fx:id="bookcondition" layoutX="571.0" layoutY="245.0" prefHeight="25.0" prefWidth="158.0" />
       <Label fx:id="errorlabel" alignment="CENTER" layoutX="401.0" layoutY="124.0" prefHeight="27.0" prefWidth="398.0" textFill="RED">
          <font>
             <Font size="18.0" />
