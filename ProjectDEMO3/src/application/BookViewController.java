@@ -128,7 +128,9 @@ public class BookViewController implements Initializable{
 				Connection connectDB = connectNow.getConnection();  
 		
 				String user= "SELECT * FROM useraccounts WHERE idUserAccount = '"+ userId +"';";
+				String book = "SELECT * FROM bookinfo WHERE BookID= '"+ bookId +"';";
 				
+				Statement statement1;
 				Statement statement;
 				try {
 					statement = connectDB.createStatement();
@@ -136,18 +138,35 @@ public class BookViewController implements Initializable{
 					queryResult.next();
 					String name= queryResult.getString(2)+" "+queryResult.getString(3);
 					
+					statement1 = connectDB.createStatement();
+					ResultSet queryResult1 = statement1.executeQuery(book);
+					queryResult1.next();
+					
 					date= LocalDate.now();
 					
 					if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
 					{	
 						Messagelbl.setText("User already has an Unreturned book ! Book id : "+queryResult.getInt(7));
 					}
+					else if (queryResult1.getInt(6) == 0) {
+						Messagelbl.setText("Book is not available !");
+					}
+					
 					else {
 					String updatequery="UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+bookId+"', `Issuedate` = '"+date+"' WHERE (`idUserAccount` = '"+userId+"');";
 					statement.executeUpdate(updatequery);
 					
+					String updatebook = "UPDATE `librarymanager`.`bookinfo` SET `Available` = '0' WHERE (`BookID` = '"+bookId+"');";
+					statement.executeUpdate(updatebook);
+					
 					successlbl.setText(name+" Issed the book");
 					}
+					
+					queryResult.close();
+					queryResult1.close();
+					statement.close();
+					statement1.close();
+					
 					
 					
 				}catch (SQLException e) {

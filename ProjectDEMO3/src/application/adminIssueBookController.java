@@ -161,6 +161,10 @@ public class adminIssueBookController implements Initializable{
 							{
 								Messagelbl.setText("Please enter all the information!");
 							}
+
+							else if (booksavailable == 0) {
+								Messagelbl.setText("Book not available!");
+							}
 							
 							else 
 							{
@@ -169,7 +173,7 @@ public class adminIssueBookController implements Initializable{
 								
 								statement.executeUpdate(updateuser);
 								
-								String updatebook = "UPDATE `librarymanager`.`bookinfo` SET `Available` = '"+ booksavailable +"' WHERE (`BookID` = '3');";
+								String updatebook = "UPDATE `librarymanager`.`bookinfo` SET `Available` = '0' WHERE (`BookID` = '"+bookid+"');";
 								statement.executeUpdate(updatebook);
 								
 								
