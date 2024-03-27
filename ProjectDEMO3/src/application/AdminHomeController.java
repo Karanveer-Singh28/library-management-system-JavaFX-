@@ -2,8 +2,11 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -39,8 +42,7 @@ public class AdminHomeController implements Initializable{
 	@FXML public TableColumn<Issuedbook, LocalDate> issuedate;
 	@FXML public TableColumn<Issuedbook, Integer> userid;
 		
-	ObservableList<Issuedbook> observablelist= FXCollections.observableArrayList(
-			new Issuedbook("Book1",LocalDate.now(),3));
+	ObservableList<Issuedbook> observablelist= FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -178,15 +180,41 @@ public class AdminHomeController implements Initializable{
 		issuedate.setCellValueFactory(new PropertyValueFactory<>("issueDate"));
 		userid.setCellValueFactory(new PropertyValueFactory<>("userId"));
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		String curdate= formatter.format(LocalDate.now());
+		int bookid;
+		String query;
 		
-		String issuedate= formatter.format(LocalDate.now().plusDays(31));
+		String query1="SELECT iduserAccount, Bookidissued, Issuedate FROM useraccounts WHERE Bookidissued != 0 OR Bookidissued != null;";
 		
-		String query="SELECT * FROM bookinfo WHERE Available = '0';";
+		DatabaseConnection connectNow = new DatabaseConnection();
+		Connection connectDB = connectNow.getConnection();
 		
-		
+		Statement statement;
+		try {
+			statement = connectDB.createStatement();
+			ResultSet queryResult = statement.executeQuery(query1);
+
+			while (queryResult.next()) {
+				bookid = queryResult.getInt("Bookidissued");
+				LocalDate issuedate = LocalDate.parse(queryResult.getString("Issuedate"));
+				int userid = queryResult.getInt("iduserAccount");
+				
+				query="SELECT BookTitle FROM bookinfo WHERE BookId = '"+bookid+"';";
+				
+				Statement statement1 = connectDB.createStatement();
+				ResultSet queryResult1 = statement1.executeQuery(query);
+				queryResult1.next();
+				
+				String bookname = queryResult1.getString(1);
+				queryResult1.close();
+				
+
+				observablelist.add(new Issuedbook(bookname, issuedate, userid));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
