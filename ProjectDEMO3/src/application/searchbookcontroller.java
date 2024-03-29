@@ -146,19 +146,15 @@ public class searchbookcontroller implements Initializable {
 	            }
 	            
 				if (index == 0) {
-					resultlbl.setText("Sorry, No results found.");
+					resultlbl.setText("Sorry, No results found  :(");
 				} else {
 					resultlbl.setText("Search Results:");
 				}
-	            
 				
-	            
 	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-	        
-	        
 	    }
 	    
 	    else
