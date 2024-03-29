@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class searchbookcontroller implements Initializable {
@@ -44,6 +45,7 @@ public class searchbookcontroller implements Initializable {
 	@FXML TextField searchfield;
 	@FXML Button homebtn;
 	@FXML Label resultlbl;
+	@FXML Pane mypane;
 	
 	
 	private ImageView[] bookCovers;
@@ -104,9 +106,13 @@ public class searchbookcontroller implements Initializable {
 				 	bookcover=queryResult.getString(3);
 				 	booktitle=queryResult.getString(2);
 				 	
+				 	Hyperlink hyperlink = booktitles[i];
 				 	
 		            bookCovers[i].setImage(new Image(bookcover));
 		            booktitles[i].setText(booktitle);
+		            
+		            int  bookId = queryResult.getInt(1); 
+		            openbook(bookId, hyperlink);
 		       }
 			 
 		}
@@ -115,6 +121,31 @@ public class searchbookcontroller implements Initializable {
 		}
 	
 	}
+	
+	public void openbook(int bookId, Hyperlink hyperlink)
+	{
+        hyperlink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    // Load the book view FXML file
+                    
+                	FXMLLoader loader = new FXMLLoader(getClass().getResource("adminBookView.fxml"));
+                    Stage stage = (Stage)mypane.getScene().getWindow();
+                    stage.setScene(new Scene(loader.load()));
+                    stage.centerOnScreen();
+
+                    adminBookViewController Controller = loader.getController();
+                    Controller.initData(bookId);
+                    
+                    stage.show();
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 	
 	@FXML
 	public void onSearch() {
@@ -133,9 +164,15 @@ public class searchbookcontroller implements Initializable {
 	                String bookcover = queryResult.getString("BookCoverImgUrl");
 	                String booktitle = queryResult.getString("BookTitle");
 	                
+	                Hyperlink hyperlink = booktitles[index];
+	                int bookid = queryResult.getInt(1);
+	                
+	                
 	                bookCovers[index].setImage(new Image(bookcover));
 	                booktitles[index].setText(booktitle);
 	                index++;
+	                
+	                openbook(bookid, hyperlink);
 	            }
 	            
 	                     
@@ -150,6 +187,7 @@ public class searchbookcontroller implements Initializable {
 				} else {
 					resultlbl.setText("Search Results:");
 				}
+				
 				
 	            
 	        } catch (SQLException e) {

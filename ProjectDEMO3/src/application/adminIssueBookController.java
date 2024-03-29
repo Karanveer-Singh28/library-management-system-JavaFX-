@@ -40,6 +40,12 @@ public class adminIssueBookController implements Initializable{
 	@FXML Button Issuebookbtn;
 	
 	
+	public void initData(int bookId) {
+		// TODO Auto-generated method stub
+		BookIDtxt.setText(Integer.toString(bookId));
+		Searchbook.fire();
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -190,6 +196,9 @@ public class adminIssueBookController implements Initializable{
 				}						
 			});		
 		}
+
+
+	
 }
 
 			
