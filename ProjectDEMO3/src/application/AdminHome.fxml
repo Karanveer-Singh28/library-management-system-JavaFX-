@@ -98,7 +98,7 @@
                                  </color>
                               </DropShadow>
                            </effect></Button>
-                        <Button mnemonicParsing="false" prefHeight="237.0" prefWidth="292.0" style="-fx-font-weight: 900;" text="Search User" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="SOMETIMES">
+                        <Button fx:id="searchuserbtn" mnemonicParsing="false" prefHeight="237.0" prefWidth="292.0" style="-fx-font-weight: 900;" text="Search User" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="SOMETIMES">
                            <effect>
                               <DropShadow offsetY="5.0" spread="0.22">
                                  <color>
