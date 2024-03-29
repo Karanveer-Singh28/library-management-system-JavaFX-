@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.searchbookcontroller">
+   <children>
+      <AnchorPane layoutX="500.0" layoutY="-93.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="searchfield" layoutX="363.0" layoutY="13.0" prefHeight="25.0" prefWidth="475.0" promptText="Search Book ...." />
+         </children>
+      </AnchorPane>
+      <HBox layoutX="24.0" layoutY="161.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
+         <children>
+            <ImageView fx:id="book1cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../images/Java_Textbook.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="book2cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Harry_Potter.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="book3cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../images/Blood&amp;amp;Elves.jpg" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="book4cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Book_Thief.jpg" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="150.0" right="150.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="24.0" layoutY="420.0" maxWidth="1172.0" minWidth="749.0" prefHeight="183.0" prefWidth="1172.0" spacing="120.0">
+         <children>
+            <ImageView fx:id="book5cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/American_Prometheus.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="book6cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../images/Sun_Also_Rises.jpg" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="book7cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../images/Fear&amp;amp;Loathing.jpg" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="book8cover" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Disposed.jpg" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="150.0" right="150.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="24.0" layoutY="344.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
+         <padding>
+            <Insets left="150.0" right="150.0" top="10.0" />
+         </padding>
+         <children>
+            <Hyperlink fx:id="book1title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Introduction to Java" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book2title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Harry Potter" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book3title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Blood and Elves" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book4title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Book Thief" textAlignment="CENTER">
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+         </children>
+      </HBox>
+      <HBox layoutX="24.0" layoutY="603.0" maxWidth="1172.0" minWidth="749.0" prefHeight="44.0" prefWidth="1172.0" spacing="120.0">
+         <padding>
+            <Insets left="150.0" right="150.0" top="10.0" />
+         </padding>
+         <children>
+            <Hyperlink fx:id="book5title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="American Prometheus" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book6title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="The Sun Also Rises" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book7title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefHeight="23.0" prefWidth="130.0" text="Fear and Loathing" textAlignment="CENTER" wrapText="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+            <Hyperlink fx:id="book8title" alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="The Disposed" textAlignment="CENTER">
+               <effect>
+                  <Glow />
+               </effect>
+            </Hyperlink>
+         </children>
+      </HBox>
+      <Label fx:id="resultlbl" layoutX="169.0" layoutY="88.0" prefHeight="60.0" prefWidth="324.0" text="Recommended Books ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="homebtn" mnemonicParsing="false" text="Home" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>

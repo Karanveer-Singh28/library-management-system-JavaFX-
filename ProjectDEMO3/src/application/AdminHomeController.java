@@ -37,6 +37,7 @@ public class AdminHomeController implements Initializable{
 	@FXML Menu bookmenu;
 	@FXML Menu myaccountmenu;
 	@FXML MenuBar mymenubar;
+	@FXML Button searchbookbtn;
 	@FXML TableView<Issuedbook> tableview;
 	@FXML public TableColumn<Issuedbook, String> bookname;
 	@FXML public TableColumn<Issuedbook, LocalDate> issuedate;
@@ -57,7 +58,28 @@ public class AdminHomeController implements Initializable{
 		//#################            Button controls         #######################
 		
 		
-	
+			//Go to search book page
+		    searchbookbtn.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					FXMLLoader loader = new FXMLLoader(searchbookcontroller.class.getResource("searchbook.fxml"));
+					try {
+						Parent root = loader.load();
+						Stage stage = (Stage) searchbookbtn.getScene().getWindow();
+
+						stage.setScene(new Scene(root, 1200, 800));
+						stage.setTitle("Search Book");
+						stage.show();
+
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+		    	
+		    });
 	
 			//Go to Issue book page 
 			Issuebookbtn.setOnAction(new EventHandler<ActionEvent>() {
