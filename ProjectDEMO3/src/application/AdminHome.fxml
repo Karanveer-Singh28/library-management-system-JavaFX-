@@ -49,6 +49,7 @@
                   <TableView fx:id="tableview" layoutX="-3.0" layoutY="25.0" prefHeight="548.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                     <columns>
                       <TableColumn fx:id="bookname" minWidth="-1.0" prefWidth="203.0" text="Book Name" />
+                        <TableColumn fx:id="bookid" minWidth="-Infinity" prefWidth="96.0" text="Book ID" />
                       <TableColumn fx:id="issuedate" prefWidth="90.0" text="Issue Date" />
                         <TableColumn fx:id="userid" minWidth="-Infinity" prefWidth="96.0" text="User ID" />
                     </columns>

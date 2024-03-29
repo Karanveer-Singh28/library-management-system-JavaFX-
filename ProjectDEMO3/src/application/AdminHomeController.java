@@ -41,6 +41,7 @@ public class AdminHomeController implements Initializable{
 	@FXML public TableColumn<Issuedbook, String> bookname;
 	@FXML public TableColumn<Issuedbook, LocalDate> issuedate;
 	@FXML public TableColumn<Issuedbook, Integer> userid;
+	@FXML public TableColumn<Issuedbook, Integer> bookid;
 		
 	ObservableList<Issuedbook> observablelist= FXCollections.observableArrayList();
 	
@@ -179,6 +180,7 @@ public class AdminHomeController implements Initializable{
 		bookname.setCellValueFactory(new PropertyValueFactory<>("bookName"));
 		issuedate.setCellValueFactory(new PropertyValueFactory<>("issueDate"));
 		userid.setCellValueFactory(new PropertyValueFactory<>("userId"));
+		bookid.setCellValueFactory(new PropertyValueFactory<>("bookId"));
 		
 		
 		int bookid;
@@ -209,7 +211,7 @@ public class AdminHomeController implements Initializable{
 				queryResult1.close();
 				
 
-				observablelist.add(new Issuedbook(bookname, issuedate, userid));
+				observablelist.add(new Issuedbook(bookname, issuedate, userid, bookid));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

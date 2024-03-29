@@ -6,14 +6,23 @@ public class Issuedbook {
 	private String bookName = null;
 	private LocalDate issueDate = null;
     private int userId = 0;
+    private int bookId = 0;
     
-    public Issuedbook(String bookName, LocalDate issueDate, int userId) {
+    public Issuedbook(String bookName, LocalDate issueDate, int userId, int bookId) {
 		
 		this.bookName = bookName;
 		this.issueDate = issueDate;
 		this.userId = userId;
+		this.bookId = bookId;
+	}
+    
+	public int getBookId() {
+		return bookId;
 	}
 	
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
     
 	public String getBookName() {
 		return bookName;
@@ -38,10 +47,4 @@ public class Issuedbook {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
-    
-    
-    
-    
-	
 }
