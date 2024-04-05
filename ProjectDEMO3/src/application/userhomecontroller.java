@@ -46,6 +46,7 @@ public class userhomecontroller implements Initializable {
 	@FXML Button logoutbtn;
 	@FXML Label resultlbl;
 	@FXML Pane mypane;
+	@FXML Button accountbtn;
 	
 	int userId;
 	
@@ -76,6 +77,28 @@ public class userhomecontroller implements Initializable {
 					e.printStackTrace();
 				}
 
+			}
+		});
+		
+		accountbtn.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("userAccount.fxml"));
+                    Stage stage = (Stage)mypane.getScene().getWindow();
+                    stage.setScene(new Scene(loader.load()));
+                    stage.centerOnScreen();
+                    
+                    useraccountcontroller Controller = loader.getController();
+                    Controller.setUserId( userId);
+                    
+                    stage.show();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		

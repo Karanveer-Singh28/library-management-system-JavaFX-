@@ -21,7 +21,7 @@
             <Pane prefHeight="44.0" prefWidth="1200.0" style="-fx-background-color: lightgrey;">
                <children>
                   <TextField fx:id="searchfield" layoutX="417.0" layoutY="11.0" prefHeight="25.0" prefWidth="366.0" promptText="Search..." />
-                  <Button layoutX="1042.0" layoutY="10.0" mnemonicParsing="false" text="Account" />
+                  <Button fx:id="accountbtn" layoutX="1042.0" layoutY="10.0" mnemonicParsing="false" text="Account" />
                   <Label layoutX="14.0" layoutY="4.0" text="L.M.S." textFill="WHITE">
                      <font>
                         <Font size="26.0" />
