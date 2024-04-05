@@ -1,3 +1,5 @@
+// purpose: This file is the controller for the search book page. It allows the user to search for books by title and displays the results.
+
 package application;
 
 import java.io.IOException;
@@ -54,9 +56,10 @@ public class searchbookcontroller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-	
+		// Initialize the book images and titles
 		bookinit();
 		
+		// Return to home page
 		homebtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -77,11 +80,12 @@ public class searchbookcontroller implements Initializable {
 			}
 		});
 		
+		// Search for books
 		searchfield.textProperty().addListener((observable, oldValue, newValue) -> onSearch());
 		
 	}
 	
-	
+	// Initialize the book images and titles
 	public void bookinit()
 	{
 		bookCovers = new ImageView[]{book1cover, book2cover, book3cover, book4cover, book5cover, book6cover, book7cover, book8cover};
@@ -90,6 +94,7 @@ public class searchbookcontroller implements Initializable {
 		DatabaseConnection connectNow = new DatabaseConnection();
 		Connection connectDB = connectNow.getConnection();
 		
+		// Query to get random books
 		String booksquery = "SELECT * FROM bookinfo ORDER BY RAND();";
 		
 		resultlbl.setText("Recommended Books:");
@@ -122,8 +127,10 @@ public class searchbookcontroller implements Initializable {
 	
 	}
 	
+	// Open the book view
 	public void openbook(int bookId, Hyperlink hyperlink)
-	{
+	{	
+		// Open the book view
         hyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -147,9 +154,12 @@ public class searchbookcontroller implements Initializable {
         });
     }
 	
+	
+	// Search for books
 	@FXML
 	public void onSearch() {
 	    String searchText = searchfield.getText().trim();
+	    // Search for the book by title
 	    if (!searchText.isEmpty()) {
 	        String searchQuery = "SELECT * FROM bookinfo WHERE BookTitle LIKE ? LIMIT 8;";
 	        
@@ -167,7 +177,7 @@ public class searchbookcontroller implements Initializable {
 	                Hyperlink hyperlink = booktitles[index];
 	                int bookid = queryResult.getInt(1);
 	                
-	                
+	                // Set the book image and title
 	                bookCovers[index].setImage(new Image(bookcover));
 	                booktitles[index].setText(booktitle);
 	                index++;
@@ -178,10 +188,11 @@ public class searchbookcontroller implements Initializable {
 	                     
 	            // If less than 8 results, clear the remaining images and titles
 	            for (int i = index; i < bookCovers.length; i++) {
-	                bookCovers[i].setImage(null); // or set to a default image
+	                bookCovers[i].setImage(null);
 	                booktitles[i].setText("");
 	            }
 	            
+	            // If no results found, display a message
 				if (index == 0) {
 					resultlbl.setText("Sorry, No results found  :(");
 				} else {
@@ -197,6 +208,7 @@ public class searchbookcontroller implements Initializable {
 	    
 	    else
 	    {
+	    	// If the search field is empty, display the recommended books
 	    	bookinit();
 	    	
 	    }

@@ -38,6 +38,7 @@ public class BookViewController implements Initializable{
 	int userId;
 	int bookId;
 	
+	//Method to set the book view data
 	public void initData(int bookId,int UserId) {
 		// TODO Auto-generated method stub
 		
@@ -82,11 +83,14 @@ public class BookViewController implements Initializable{
 		
 		
 	}
-
+	
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		//Home button action
 		homebtn.setOnAction(new EventHandler<ActionEvent>()
 				{
 
@@ -117,6 +121,7 @@ public class BookViewController implements Initializable{
 			
 				});
 		
+		//Issue button action
 		issuebtn.setOnAction(new EventHandler<ActionEvent>()
 		{
 
@@ -142,16 +147,21 @@ public class BookViewController implements Initializable{
 					ResultSet queryResult1 = statement1.executeQuery(book);
 					queryResult1.next();
 					
+					//Getting the current date
 					date= LocalDate.now();
 					
+					//Checking if the user has an unreturned book
 					if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
 					{	
 						Messagelbl.setText("User already has an Unreturned book ! Book id : "+queryResult.getInt(7));
 					}
+					
+					//Checking if the book is available
 					else if (queryResult1.getInt(6) == 0) {
 						Messagelbl.setText("Book is not available !");
 					}
 					
+					//Issuing the book
 					else {
 					String updatequery="UPDATE `librarymanager`.`useraccounts` SET `Bookidissued` = '"+bookId+"', `Issuedate` = '"+date+"' WHERE (`idUserAccount` = '"+userId+"');";
 					statement.executeUpdate(updatequery);

@@ -52,7 +52,7 @@ public class AdminHomeController implements Initializable{
 		// TODO Auto-generated method stub
 			
 		
-		
+		//#################            Table initialization         #######################
 		initializetable();		
 		
 		
@@ -178,6 +178,7 @@ public class AdminHomeController implements Initializable{
 		
 		});
 			
+			//go to add new book page
 			Menuitemaddnewbook.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
@@ -200,6 +201,7 @@ public class AdminHomeController implements Initializable{
 			});
 			
 			
+			//go to login page
 			Logout.setOnAction(new EventHandler<ActionEvent>()
 			{
 
@@ -224,6 +226,8 @@ public class AdminHomeController implements Initializable{
 			
 		}
 	
+	
+	//#################            Table initialization         #######################
 	public void initializetable()
 	{
 		bookname.setCellValueFactory(new PropertyValueFactory<>("bookName"));
@@ -270,7 +274,7 @@ public class AdminHomeController implements Initializable{
 		
 		
 		
-		
+		//Set the items in the table
 		tableview.setItems(observablelist);
 		
 		

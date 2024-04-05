@@ -57,9 +57,10 @@ public class userhomecontroller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-	
+		// Initialize the book images and titles
 		bookinit();
 		
+		//Return to login
 		logoutbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -80,6 +81,7 @@ public class userhomecontroller implements Initializable {
 			}
 		});
 		
+		// Return to user account page
 		accountbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -102,11 +104,12 @@ public class userhomecontroller implements Initializable {
 			}
 		});
 		
+		// Search for books
 		searchfield.textProperty().addListener((observable, oldValue, newValue) -> onSearch());
 		
 	}
 	
-	
+	// Initialize the book images and titles
 	public void bookinit()
 	{
 		bookCovers = new ImageView[]{book1cover, book2cover, book3cover, book4cover, book5cover, book6cover, book7cover, book8cover};
@@ -147,8 +150,10 @@ public class userhomecontroller implements Initializable {
 	
 	}
 	
+	// Open the book view
 	public void openbook(int bookId,  Hyperlink hyperlink)
 	{
+		// Open the book view when the hyperlink is clicked and pass the book id
         hyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -172,19 +177,22 @@ public class userhomecontroller implements Initializable {
         });
     }
 	
+	
 	@FXML
 	public void onSearch() {
 	    String searchText = searchfield.getText().trim();
 	    if (!searchText.isEmpty()) {
+	    	// Search for books
 	        String searchQuery = "SELECT * FROM bookinfo WHERE BookTitle LIKE ? LIMIT 8;";
 	        
 	        try (Connection connectDB = new DatabaseConnection().getConnection();
 	             PreparedStatement preparedStatement = connectDB.prepareStatement(searchQuery)) {
-	            
+	            // Search for the book by title
 	            preparedStatement.setString(1, "%" + searchText + "%");
 	            ResultSet queryResult = preparedStatement.executeQuery();
 	            
 	            int index = 0;
+	            // Display the search results
 	            while (queryResult.next() && index < bookCovers.length) {
 	                String bookcover = queryResult.getString("BookCoverImgUrl");
 	                String booktitle = queryResult.getString("BookTitle");
@@ -197,16 +205,18 @@ public class userhomecontroller implements Initializable {
 	                booktitles[index].setText(booktitle);
 	                index++;
 	                
+	                // Open the book view
 	                openbook(bookid, hyperlink);
 	            }
 	            
 	                     
 	            // If less than 8 results, clear the remaining images and titles
 	            for (int i = index; i < bookCovers.length; i++) {
-	                bookCovers[i].setImage(null); // or set to a default image
+	                bookCovers[i].setImage(null); 
 	                booktitles[i].setText("");
 	            }
 	            
+	            // If no results found, display a message
 				if (index == 0) {
 					resultlbl.setText("Sorry, No results found  :(");
 				} else {
@@ -220,6 +230,7 @@ public class userhomecontroller implements Initializable {
 	        }
 	    }
 	    
+	    // If search field is empty, display recommended books
 	    else
 	    {
 	    	bookinit();
@@ -229,6 +240,7 @@ public class userhomecontroller implements Initializable {
 	    
 	}
 	
+	// Set the user id
 	public void setUserId(int int1) {
 		// TODO Auto-generated method stub
 		this.userId=int1;

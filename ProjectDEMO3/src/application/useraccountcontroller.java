@@ -33,6 +33,7 @@ public class useraccountcontroller implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		//Return to home
 		Homebtn.setOnAction(new EventHandler<ActionEvent>()
 		{
 
@@ -58,12 +59,10 @@ public class useraccountcontroller implements Initializable{
 					e.printStackTrace();
 				}
 			}
-		});	
-		
-		
-		
+		});			
 	}
 	
+	//Method to initialize the labels
 	public void intializeLabels() {
 		System.out.println(userId);
 		String query = "SELECT * FROM useraccounts WHERE iduserAccount = '"+userId+"';";
@@ -112,7 +111,7 @@ public class useraccountcontroller implements Initializable{
 		
 	}
 
-
+	//Method to set the user id
 	public void setUserId(int userId) {
 		// TODO Auto-generated method stub
 		this.userId=userId;

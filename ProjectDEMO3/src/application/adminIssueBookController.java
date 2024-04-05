@@ -1,3 +1,5 @@
+// Purpose: Controller for Issue Book page for Admin.
+
 package application;
 
 import java.io.IOException;
@@ -39,12 +41,13 @@ public class adminIssueBookController implements Initializable{
 	@FXML ImageView Bookcover;
 	@FXML Button Issuebookbtn;
 	
-	
+	// get the book id from the book view page
 	public void initData(int bookId) {
 		// TODO Auto-generated method stub
 		BookIDtxt.setText(Integer.toString(bookId));
 		Searchbook.fire();
 	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -117,12 +120,20 @@ public class adminIssueBookController implements Initializable{
 			});
 			
 			
+			//Issue book to user
 			Issuebookbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
 				public void handle(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					int userid=Integer.parseInt(UserIDtxt.getText());    //TODO NEED TO CHECK IF ANY FIELD IS BLANK 
+					
+					//Check if all fields are filled
+					if (BookIDtxt.getText().isEmpty() || UserIDtxt.getText().isEmpty()
+							|| Issuedate.getValue() == null) {
+						Messagelbl.setText("Please enter all the information!");
+						return;
+					}
+					int userid=Integer.parseInt(UserIDtxt.getText());    
 					int bookid=Integer.parseInt(BookIDtxt.getText());
 					
 					DatabaseConnection connectNow = new DatabaseConnection();
@@ -136,10 +147,12 @@ public class adminIssueBookController implements Initializable{
 						statement = connectDB.createStatement();
 						ResultSet queryResult = statement.executeQuery(book);
 						
+						//Check if the book exists
 						if(queryResult.next() != true)
 						{
 							Messagelbl.setText("Invalid Book ID !");
 						}
+						
 						
 						else
 						{
@@ -153,25 +166,24 @@ public class adminIssueBookController implements Initializable{
 							
 							queryResult = statement.executeQuery(user);
 					        
+							//Check if the user exists
 							if(queryResult.next() != true)
 							{
 								Messagelbl.setText("Invalid User ID !");
 							}
 							
+							//Check if the user has already issued a book
 							else if(queryResult.getString(7) !=  null && queryResult.getInt(7)!=0)
 							{
 								Messagelbl.setText("User already has an Unreturned book ! Book id : "+queryResult.getInt(7));
 							}
 							
-							else if(BookIDtxt.getText()== null || UserIDtxt.getText()==null || Issuedate.getValue()==null)
-							{
-								Messagelbl.setText("Please enter all the information!");
-							}
-
+							//Check if the book is available
 							else if (booksavailable == 0) {
 								Messagelbl.setText("Book not available!");
 							}
 							
+							//Issue the book
 							else 
 							{
 								DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

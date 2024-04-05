@@ -7,6 +7,7 @@ public class User {
 	public int userid;
 	public String username;
 	
+	// Constructor
 	public User(int userid, String firstname, String lastname, String username) {
 		this.userid = userid;
 		this.firstname = firstname;
@@ -14,6 +15,8 @@ public class User {
 		this.username = username;
 	}
 	
+	
+	// Getters and setters
 	public int getUserid() {
 		return userid;
 	}

@@ -1,3 +1,6 @@
+// Add new book to database
+
+
 package application;
 
 import java.io.File;
@@ -71,20 +74,28 @@ public class addnewbookcontroller implements Initializable {
 			}	
 		});
 			
+			
+			//Upload book cover image
 			uploadpicture.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
 				public void handle(ActionEvent arg0) {
 					// TODO Auto-generated method stub
+					
+					//File chooser to select image
 					FileChooser fileChooser=new FileChooser();
 					fileChooser.setTitle("Upload Vehicle Image");
 					fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png","*.jpeg","*.svg"));
 					Stage stage=(Stage)myanchorpane.getScene().getWindow();
 					
 					file=fileChooser.showOpenDialog(stage);
+					
+					//Check if image is selected
 					if(file==null) {
 						errorlabel.setText("Upload the book cover image!");
-					}else {
+					}
+					//Display image
+					else {
 						errorlabel.setText("");
 					path="file:"+file.getAbsolutePath();
 					
@@ -99,18 +110,22 @@ public class addnewbookcontroller implements Initializable {
 			});
 			
 			
+			//Add book to database
 			addbookbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-								
+				
+				//Check if all fields are filled
 				if((booktitletxt.getText().isEmpty() || booktitletxt.getText()==null ) || (authortxt.getText().isEmpty() || authortxt.getText()==null) || (conditioncombo.getValue()== null) || (file==null) || (publishertxt.getText().isEmpty() || publishertxt.getText()==null))
 				{ errorlabel.setText("Enter full details !");
 				}
 				
+				//Add book to database
 				else
 				{
+					//Get values from textfields
 					String Title=booktitletxt.getText();
 					String Author=authortxt.getText();
 					String Publisher=publishertxt.getText();

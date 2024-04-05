@@ -1,3 +1,5 @@
+// Purpose: Controller for Payment.fxml
+
 package application;
 
 import java.io.IOException;
@@ -23,7 +25,8 @@ public class Paymentcontroller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	
-	backbtn.setOnAction(new EventHandler<ActionEvent>() {
+		//Return to book return page
+		backbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 		@Override
 		public void handle(ActionEvent arg0) {

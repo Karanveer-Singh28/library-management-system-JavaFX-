@@ -1,3 +1,5 @@
+// Purpose: Controller for Book Return page.
+
 package application;
 
 import java.io.IOException;
@@ -46,7 +48,7 @@ public class BookReturnController implements Initializable{
 		bookcondition.setItems(FXCollections.observableArrayList("New","Used","Damaged Level 1","Damaged Level 2"));
 		
 			
-		//Return to home 
+		  //Return to home 
 			Homebtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -69,7 +71,7 @@ public class BookReturnController implements Initializable{
 			});
 			
 			
-			
+			// Calculate total cost
 			calculate.setOnAction(new EventHandler<ActionEvent>()
 					{
 				public void handle(ActionEvent arg0) {
@@ -93,14 +95,18 @@ public class BookReturnController implements Initializable{
 						statement = connectDB.createStatement();
 						ResultSet queryResult = statement.executeQuery(date);
 						
+						//check if book is issued
 						if(queryResult.next() != true)
 						{
 							errorlabel.setText("Invalid Book ID or Book is already returned!");
 						}
+						
+						//calculate cost
 						else {
 						Date start = queryResult.getDate(1) ;
 						Date stop = Date.valueOf(returndate.getValue());
 						
+						// calculate difference in days
 						long diffInMillies = Math.abs(start.getTime() - stop.getTime());
 						long diff =TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 												
@@ -117,7 +123,8 @@ public class BookReturnController implements Initializable{
 						queryResult = statement.executeQuery(conditionquery);
 						queryResult.next();
 						condition=queryResult.getString(1);
-												
+						
+						// check book condition
 						if(condition == (bookcondition.getValue())) 
 						{	cost+=0;			}
 						else if(bookcondition.getValue() == "Used")
@@ -127,6 +134,7 @@ public class BookReturnController implements Initializable{
 						else if(bookcondition.getValue() == "Damaged Level 2")
 						{	cost+=35;	}
 						
+						// display cost
 						Pricedisplaylabel.setText("$ "+ cost);
 						
 						}
@@ -142,7 +150,7 @@ public class BookReturnController implements Initializable{
 					
 				
 							
-			// Go to payment screen	
+			// Go to card payment page
 			paycard.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
@@ -172,7 +180,7 @@ public class BookReturnController implements Initializable{
 			});	
 			
 			
-			
+			// Pay by cash
 			paycash.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
@@ -189,6 +197,7 @@ public class BookReturnController implements Initializable{
 						
 						Statement statement;
 						try {
+							// update book info and user accounts
 							statement = connectDB.createStatement();
 							int bookid=Integer.parseInt(bookidtxt.getText());	
 							String condition=bookcondition.getValue();

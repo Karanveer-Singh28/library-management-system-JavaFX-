@@ -1,3 +1,5 @@
+// list the users in the tableview and display the details of the selected user in the labels
+
 package application;
 
 import java.io.IOException;
@@ -51,9 +53,11 @@ public class searchuserController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+		// Initialize the tableview
 		tableinit();
 		
-		
+		// Display the data in the labels when a user is selected
 		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				
@@ -61,6 +65,8 @@ public class searchuserController implements Initializable{
 			}
 		});
 		
+		
+		//Return to home
 		Homebtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -82,7 +88,7 @@ public class searchuserController implements Initializable{
 		});		
 	}
 	
-	
+	// Initialize the tableview
 	public void tableinit() {
 		userid.setCellValueFactory(new PropertyValueFactory<User, Integer>("userid"));
 		firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
@@ -126,9 +132,11 @@ public class searchuserController implements Initializable{
 		tableview.setItems(observablelist);
 	}
 	
+	// Display the data in the labels
 	 private void displayDataInLabels() {
 	        // Get the selected user from the tableview
 	        User selectedUser = tableview.getSelectionModel().getSelectedItem();
+	        
 	        
 	        if (selectedUser != null) {
 	        	int userid = selectedUser.getUserid();
@@ -146,6 +154,7 @@ public class searchuserController implements Initializable{
 					queryResult.next();
 					
 					int bookidissued=queryResult.getInt(7);
+					// Check if the user has an issued book
 					if(bookidissued !=0)
 					{
 						String querybook= "SELECT * FROM bookinfo WHERE BookId = "+bookidissued+";";
@@ -168,6 +177,7 @@ public class searchuserController implements Initializable{
 				        statement1.close();	       
 						
 					}
+					// If the user has not issued a book
 					else {
 						Activebooklbl.setText("None");
 						bookidlabel.setVisible(false);

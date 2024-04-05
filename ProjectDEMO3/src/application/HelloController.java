@@ -1,3 +1,5 @@
+// This class is the controller class for the Login Page. It validates the user login and directs to the appropriate User or Admin Home Page.
+
 package application;
 
 import java.io.IOException;
@@ -44,6 +46,7 @@ public class HelloController implements Initializable {
 				DatabaseConnection connectNow = new DatabaseConnection();
 				Connection connectDB = connectNow.getConnection();
 				
+				//Query to verify login credentials
 				String verifyLogin = "SELECT count(1), AccountType, idUserAccount FROM useraccounts WHERE Username='" + usernameTextField.getText() + "' AND Password='" + passwordPasswordField.getText() + "'";
 
 				
@@ -52,8 +55,11 @@ public class HelloController implements Initializable {
 						ResultSet queryResult = statement.executeQuery(verifyLogin);
 						
 						queryResult.next();
+						
+						//If the query returns a row, the user is redirected to the appropriate Home Page
 							if(queryResult.getInt(1) == 1)
 							{
+								//If the user is an Administrator, the Admin Home Page is loaded
 								if(queryResult.getInt(2) == 1)
 								{
 									FXMLLoader loader = new FXMLLoader(AdminHomeController.class.getResource("AdminHome.fxml"));
@@ -74,6 +80,7 @@ public class HelloController implements Initializable {
 										e.printStackTrace();
 									}
 								}
+								//If the user is a regular user, the User Home Page is loaded
 								else if(queryResult.getInt(2) == 0)
 								{
 									FXMLLoader loader = new FXMLLoader(userhomecontroller.class.getResource("UserHomepage.fxml"));
@@ -99,6 +106,7 @@ public class HelloController implements Initializable {
 								
 							}
 							
+							//If the query returns no rows, the user is prompted to enter the correct Username and Password
 							else
 							{
 								LoginMessageLabel.setText("Incorrect Username or Password!");
@@ -108,7 +116,7 @@ public class HelloController implements Initializable {
 				         statement.close();
 				 }catch(Exception e1)
 					{
-						System.out.println(e1);
+						e1.printStackTrace();
 					}
 				
 				
@@ -118,7 +126,7 @@ public class HelloController implements Initializable {
 		
 		});
 		
-		
+		//button to close the application
 		Cancelbtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override

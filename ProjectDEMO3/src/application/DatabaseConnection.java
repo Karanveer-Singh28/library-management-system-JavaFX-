@@ -1,3 +1,5 @@
+// Purpose: This class is used to connect to the database. It uses the JDBC driver to connect to the database. The database name, user and password are hardcoded in this class. The getConnection() method is used to establish the connection to the database and return the connection object.
+
 package application;
 
 import java.sql.Connection;

@@ -1,3 +1,4 @@
+
 package application;
 
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ public class Issuedbook {
     private int userId = 0;
     private int bookId = 0;
     
+    // Constructor
     public Issuedbook(String bookName, LocalDate issueDate, int userId, int bookId) {
 		
 		this.bookName = bookName;
@@ -15,6 +17,8 @@ public class Issuedbook {
 		this.userId = userId;
 		this.bookId = bookId;
 	}
+    
+    // Getters and setters
     
 	public int getBookId() {
 		return bookId;

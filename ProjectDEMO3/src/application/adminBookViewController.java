@@ -1,3 +1,5 @@
+// Purpose: Controller for the adminBookView.fxml file.
+
 package application;
 
 import java.io.IOException;
@@ -37,6 +39,7 @@ public class adminBookViewController implements Initializable{
 	
 	int bookId;
 	
+	//Method to set the book view data
 	public void initData(int bookId) {
 		// TODO Auto-generated method stub
 		
@@ -81,11 +84,14 @@ public class adminBookViewController implements Initializable{
 		
 		
 	}
-
+	
+	
+	//Method to initialize the data
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		//Back button to go back to the search book page
 		backbtn.setOnAction(new EventHandler<ActionEvent>()
 				{
 
@@ -110,7 +116,8 @@ public class adminBookViewController implements Initializable{
 					}
 			
 				});
-		
+				
+		        //Issue button to go to the issue book page
 				issuebtn.setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override

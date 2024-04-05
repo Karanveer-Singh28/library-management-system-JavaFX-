@@ -1,3 +1,5 @@
+// Add new user to the database
+
 package application;
 
 import java.io.IOException;
@@ -36,11 +38,14 @@ public class Addnewusercontroller implements Initializable{
 	@FXML ComboBox<String> accountcombo;
 	@FXML Label errorlabel;
 	@FXML Label successlabel;
-
+	
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 			
+		//Set the account type combo box
 		accountcombo.setItems(FXCollections.observableArrayList("Staff","User"));
 		//Return to Admin home page 
 			Homebtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -64,6 +69,7 @@ public class Addnewusercontroller implements Initializable{
 		
 		});
 			
+			//Confirm button to add new user to the database
 			Confirmbtn.setOnAction(new EventHandler<ActionEvent>() {
 				
 				
@@ -72,22 +78,29 @@ public class Addnewusercontroller implements Initializable{
 					// TODO Auto-generated method stub
 					errorlabel.setText("");
 					
+					//Check if all fields are filled
 					if((Firstnametxt.getText()==null || Firstnametxt.getText().isEmpty()) || (Lastnametxt.getText()==null || Lastnametxt.getText().isEmpty()) || (Usernametxt.getText()==null || Usernametxt.getText().isEmpty()) || (Passwordtxt.getText()==null || Passwordtxt.getText().isEmpty()) || (Passwordconfirmtxt.getText()==null || Passwordconfirmtxt.getText().isEmpty()) || (accountcombo.getValue()==null))
 					{
 						errorlabel.setText("Enter Full Information");
 					}
+					
+					
 					else
 					{
 						DatabaseConnection connectNow = new DatabaseConnection();
 						Connection connectDB = connectNow.getConnection();
 				
 						errorlabel.setText("");
+						
+						//Get the values from the fields
 						String fname=Firstnametxt.getText();
 						String lname=Lastnametxt.getText();
 						String username=Usernametxt.getText();
 						String password=Passwordtxt.getText();
 						String passwordconfirm=Passwordconfirmtxt.getText();
 						int accounttype;
+						
+						//Check the account type
 						if(accountcombo.getValue()== "Staff")
 							accounttype=1;
 						else
@@ -100,14 +113,17 @@ public class Addnewusercontroller implements Initializable{
 							statement = connectDB.createStatement();
 							ResultSet queryResult = statement.executeQuery(checkusername);	
 							
+							//Check if the username already exists
 							if(queryResult.next())
 								errorlabel.setText("Username already exists");
 							
+							//Check if the passwords match
 							else if (!password.equals(passwordconfirm))
 							{
 								errorlabel.setText("Passwords do not match !");
 							}
 							
+							//Add user to database
 							else {
 								String updatequery="INSERT INTO `librarymanager`.`useraccounts` (`Firstname`, `LastName`, `Username`, `Password`, `AccountType`) VALUES ('"+fname+"', '"+lname+"', '"+username+"', '"+password+"', '"+accounttype+"');";
 								statement.executeUpdate(updatequery);
