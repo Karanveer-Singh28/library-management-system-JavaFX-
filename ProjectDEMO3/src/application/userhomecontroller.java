@@ -112,7 +112,7 @@ public class userhomecontroller implements Initializable {
 	// Initialize the book images and titles
 	public void bookinit()
 	{
-		bookCovers = new ImageView[]{book1cover, book2cover, book3cover, book4cover, book5cover, book6cover, book7cover, book8cover};
+		bookCovers = new ImageView[] {book1cover, book2cover, book3cover, book4cover, book5cover, book6cover, book7cover, book8cover};
 		booktitles = new Hyperlink[] {book1title, book2title, book3title, book4title, book5title, book6title, book7title, book8title};
 		
 		DatabaseConnection connectNow = new DatabaseConnection();

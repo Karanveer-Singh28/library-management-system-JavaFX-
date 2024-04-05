@@ -189,7 +189,7 @@ public class AdminHomeController implements Initializable{
 						Stage stage=(Stage)mymenubar.getScene().getWindow();
 						
 						stage.setScene(new Scene(root,1200,800));
-						stage.setTitle("Create new User");
+						stage.setTitle("Add new Book");
 						stage.show();
 						
 					} catch (IOException e) {
